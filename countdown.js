@@ -1,4 +1,4 @@
-let fechaObjetivo = { dia: 10, mes: 12, anio: 2020 };
+let fechaObjetivo = { dia: 1, mes: 01, anio: 2021 };
 let date = new Date();
 let numeros = document.querySelectorAll(".numeros");
 let message = document.querySelector(".message");
@@ -7,7 +7,7 @@ let fechaActual = {
   mes: date.getMonth() + 1,
   anio: date.getFullYear(),
 };
-// let fechaActual = { dia: 30, mes: 11, anio: 2020 };
+// let fechaActual = { dia: 30, mes: 09, anio: 2020 };
 let meses = {
   1: 31,
   2: 28,
@@ -32,6 +32,7 @@ let secondsNow = date.getSeconds();
 //variables del tiempo restante
 let totalDays;
 let dayRest;
+let me;
 let hourRest = 23;
 let minutesRest = 59;
 let secondsRest = 59;
@@ -40,6 +41,7 @@ let d;
 const process = (dayRest = fechaObjetivo.dia - today - 1) => {
   // totalDays = 31 - today;
   // dayRest = fechaObjetivo.dia - today - 1;
+  // console.log(dayRest);
   hourRest = hourRest - hourNow;
   // hourRest = 1;
   minutesRest = minutesRest - minutesNow;
@@ -94,17 +96,18 @@ const process = (dayRest = fechaObjetivo.dia - today - 1) => {
 
 //escenario en que el fecha objetivo esta en un año posterior
 if (fechaObjetivo.anio > fechaActual.anio) {
-  process();
   if (fechaObjetivo.mes < fechaActual.mes) {
     let tdays = 0;
     let mult = 0;
     for (let i = 0; i < fechaObjetivo.mes; ++i) {
-      tdays = tdays + meses[i];
+      tdays = tdays + meses[i + 1];
+      console.log(tdays);
     }
+    tdays = tdays + fechaObjetivo.dia;
     mult = fechaObjetivo.anio - fechaActual.anio;
     tdays = tdays * mult;
+    dayRest = meses[fechaActual.mes] - today;
     console.log("el mes objetivo es :" + fechaObjetivo.mes);
-    console.log();
     console.log("Dias totales " + tdays);
   } else {
     let tdays = 0;
@@ -116,25 +119,38 @@ if (fechaObjetivo.anio > fechaActual.anio) {
   }
   console.log("esta fecha es para el otro año");
 
+  process(dayRest);
   //escenario en que el fecha objetivo esta en el año actual
 } else if (fechaObjetivo.anio == fechaActual.anio) {
   if (fechaObjetivo.mes > fechaActual.mes) {
     let idMesO = fechaObjetivo.mes;
     let idMesA = fechaActual.mes;
     let daysUntil = meses[idMesA] - fechaActual.dia;
-    if (daysUntil > 0) {
-      daysUntil = daysUntil - 1;
-    }
-    let totalDays = daysUntil + fechaObjetivo.dia;
-    console.log(totalDays);
-    process(totalDays);
-    // for (let i = 0; i < cm; ++i){
-
+    console.log(daysUntil + " , dias restantes del mes actual");
+    // if (daysUntil > 0) {
+    //   daysUntil = daysUntil - 1;
+    //   console.log(daysUntil + " , dias restantes del mes actual2");
     // }
+    totalDays = daysUntil + fechaObjetivo.dia - 1;
+    console.log(
+      totalDays + " , dias restantes del mes actual con el mes objetivo"
+    );
+    me = fechaObjetivo.mes - fechaActual.mes - 1;
+    console.log(me);
+    let mesesEnMedio = 0;
+    for (let i = idMesA + 1; i < idMesO; i++) {
+      mesesEnMedio = mesesEnMedio + meses[i];
+      console.log(mesesEnMedio);
+    }
+    totalDays = totalDays + mesesEnMedio;
+    // console.log(mesesEnMedio);
+    process(totalDays);
+
     console.log("la fecha es valida");
   } else if (fechaObjetivo.mes == fechaActual.mes) {
+    totalDays = fechaObjetivo.dia - fechaActual.dia - 1;
     if (fechaObjetivo.dia > fechaActual.dia) {
-      process();
+      process(totalDays);
     } else {
       numeros[1].innerHTML = 0;
       numeros[2].innerHTML = 0;
