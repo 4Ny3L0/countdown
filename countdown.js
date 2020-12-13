@@ -101,23 +101,23 @@ if (fechaObjetivo.anio > fechaActual.anio) {
     let mult = 0;
     for (let i = 0; i < fechaObjetivo.mes; ++i) {
       tdays = tdays + meses[i + 1];
-      console.log(tdays);
+      // console.log(tdays);
     }
     tdays = tdays + fechaObjetivo.dia;
     mult = fechaObjetivo.anio - fechaActual.anio;
     tdays = tdays * mult;
     dayRest = meses[fechaActual.mes] - today;
-    console.log("el mes objetivo es :" + fechaObjetivo.mes);
-    console.log("Dias totales " + tdays);
+    // console.log("el mes objetivo es :" + fechaObjetivo.mes);
+    // console.log("Dias totales " + tdays);
   } else {
     let tdays = 0;
     for (let i = 0; i < fechaObjetivo.mes; ++i) {
       tdays = tdays + meses[i];
     }
-    console.log("el mes objetivo es :" + fechaObjetivo.mes);
-    console.log("Dias totales " + tdays);
+    // console.log("el mes objetivo es :" + fechaObjetivo.mes);
+    // console.log("Dias totales " + tdays);
   }
-  console.log("esta fecha es para el otro año");
+  // console.log("esta fecha es para el otro año");
 
   process(dayRest);
   //escenario en que el fecha objetivo esta en el año actual
