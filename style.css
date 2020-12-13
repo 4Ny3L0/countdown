@@ -18,9 +18,12 @@ h2{
 
 .contenedor {
     display: flex;
+    padding-top: 50px;
     background-color: #5119a6;
     height: 100vh;
     flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    overflow:auto;
 }
 
 .contenedor-imagen {
@@ -40,11 +43,14 @@ h2{
 
 }
 
-@media screen and (min-width:900px) {
+@media screen and (min-width: 900px) {
     .contenedor {
         display: flex;
+        padding:0;
         background-color: #5119a6;
         height: 100vh;
+        flex-direction: row;
+        flex-wrap: unset;
     }
 
     .contenedor-imagen {
