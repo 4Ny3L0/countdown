@@ -11,25 +11,60 @@ p {
     display: block;
     color: #fff;
 }
-.contenedor{
-    display:flex;
-    background-color:#5119a6;
+h2{
+    display: block;
+    padding-bottom: 40px;
+}
+
+.contenedor {
+    display: flex;
+    background-color: #5119a6;
     height: 100vh;
+    flex-direction: column-reverse;
 }
-.contenedor-imagen{
-    flex-basis: 35%;
+
+.contenedor-imagen {
+ flex-basis: 45%;   
 }
-.contenedor-imagen img{
-margin:0 auto;
-width: 100%;
-height: 100%;
+
+.contenedor-imagen img {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
 }
-.contenedor-content{
-    flex-basis: 65%;
+
+.contenedor-content {
+    
     justify-content: center;
     align-self: center;
-    
-}   
+
+}
+
+@media screen and (min-width:900px) {
+    .contenedor {
+        display: flex;
+        background-color: #5119a6;
+        height: 100vh;
+    }
+
+    .contenedor-imagen {
+        flex-basis: 45%;
+    }
+
+    .contenedor-imagen img {
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+    }
+
+    .contenedor-content {
+        flex-basis: 55%;
+        justify-content: center;
+        align-self: center;
+
+    }
+}
+
 .contenedor-content h1{
     text-transform: uppercase;
     margin:0;
@@ -47,14 +82,19 @@ height: 100%;
 span.active{
     font-size:135px!important;
 }
+.numeros.active, .contador.active p {  
+    color: rgb(64, 133, 189);
+}
 .contenedor-contador{
     display: flex;
     justify-content: center;
+    background: rgba(31, 44, 57, 0.6);
+    padding-bottom: 25px;
 }
 .contador{
     display:flex;
     flex-direction: column-reverse;
-    margin: 50px 20px 0 0;
+    margin: 25px 20px 0 0;
 }
 .contador p{
     text-transform: uppercase;
