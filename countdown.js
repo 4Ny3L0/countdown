@@ -126,27 +126,24 @@ if (fechaObjetivo.anio > fechaActual.anio) {
     let idMesO = fechaObjetivo.mes;
     let idMesA = fechaActual.mes;
     let daysUntil = meses[idMesA] - fechaActual.dia;
-    console.log(daysUntil + " , dias restantes del mes actual");
-    // if (daysUntil > 0) {
-    //   daysUntil = daysUntil - 1;
-    //   console.log(daysUntil + " , dias restantes del mes actual2");
-    // }
+    // console.log(daysUntil + " , dias restantes del mes actual");
+
     totalDays = daysUntil + fechaObjetivo.dia - 1;
-    console.log(
-      totalDays + " , dias restantes del mes actual con el mes objetivo"
-    );
+    // console.log(
+    //   totalDays + " , dias restantes del mes actual con el mes objetivo"
+    // );
     me = fechaObjetivo.mes - fechaActual.mes - 1;
-    console.log(me);
+
     let mesesEnMedio = 0;
     for (let i = idMesA + 1; i < idMesO; i++) {
       mesesEnMedio = mesesEnMedio + meses[i];
-      console.log(mesesEnMedio);
+      // console.log(mesesEnMedio);
     }
     totalDays = totalDays + mesesEnMedio;
     // console.log(mesesEnMedio);
     process(totalDays);
 
-    console.log("la fecha es valida");
+    // console.log("la fecha es valida");
   } else if (fechaObjetivo.mes == fechaActual.mes) {
     totalDays = fechaObjetivo.dia - fechaActual.dia - 1;
     if (fechaObjetivo.dia > fechaActual.dia) {
@@ -156,16 +153,16 @@ if (fechaObjetivo.anio > fechaActual.anio) {
       numeros[2].innerHTML = 0;
       numeros[3].innerHTML = 0;
       numeros[4].innerHTML = 0;
-      console.log("Dia anterior al actual, no se cumple");
+      // console.log("Dia anterior al actual, no se cumple");
     }
   } else {
     numeros[1].innerHTML = 0;
     numeros[2].innerHTML = 0;
     numeros[3].innerHTML = 0;
     numeros[4].innerHTML = 0;
-    console.log("Esta fecha ya pasó");
+    // console.log("Esta fecha ya pasó");
   }
-  console.log("Esta fecha es del año actual");
+  // console.log("Esta fecha es del año actual");
 
   //escenario en que el fecha objetivo es una fecha del pasado o invalida
 } else {
@@ -173,5 +170,5 @@ if (fechaObjetivo.anio > fechaActual.anio) {
   numeros[2].innerHTML = 0;
   numeros[3].innerHTML = 0;
   numeros[4].innerHTML = 0;
-  console.log("Esta fecha ya pasó");
+  // console.log("Esta fecha ya pasó");
 }
