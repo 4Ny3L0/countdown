@@ -1,7 +1,8 @@
-let fechaObjetivo = { dia: 1, mes: 01, anio: 2021 };
+let fechaObjetivo = { dia: 9, mes: 01, anio: 2021 };
 let date = new Date();
 let numeros = document.querySelectorAll(".numeros");
 let message = document.querySelector(".message");
+let anio = 21;
 let fechaActual = {
   dia: date.getDate(),
   mes: date.getMonth() + 1,
@@ -26,7 +27,9 @@ let meses = {
 //Variables del tiempo actual
 let today = date.getDate();
 let hourNow = date.getHours();
+// let hourNow = 23;
 let minutesNow = date.getMinutes();
+// let minutesNow = 2;
 let secondsNow = date.getSeconds();
 
 //variables del tiempo restante
@@ -35,8 +38,13 @@ let dayRest;
 let me;
 let hourRest = 23;
 let minutesRest = 59;
+// let minutesRest = 3;
 let secondsRest = 59;
 let d;
+
+const changeYear = () => {
+  numeros[0].innerHTML = anio + 1;
+};
 
 const process = (dayRest = fechaObjetivo.dia - today - 1) => {
   // totalDays = 31 - today;
@@ -51,23 +59,23 @@ const process = (dayRest = fechaObjetivo.dia - today - 1) => {
   let myInterval = setInterval(function () {
     secondsRest = secondsRest - 1;
     if (secondsRest < 0) {
-      secondsRest = 59;
-      // secondsRest = 5;
+      // secondsRest = 59;
+      secondsRest = 5;
       minutesRest = minutesRest - 1;
       if (minutesRest < 0) {
-        minutesRest = 59;
-        // minutesRest = 0;
+        // minutesRest = 59;
+        minutesRest = 0;
         hourRest = hourRest - 1;
         if (hourRest < 0) {
           hourRest = 23;
           // hourRest = 0;
           dayRest = dayRest - 1;
-          if (dayRest < 0) {
+          if (dayRest <= 0) {
             secondsRest = 0;
             minutesRest = 0;
             hourRest = 0;
             dayRest = 0;
-            numeros[0].replaceWith(21);
+            changeYear();
             clearInterval(myInterval);
           }
         }
@@ -122,6 +130,7 @@ if (fechaObjetivo.anio > fechaActual.anio) {
   process(dayRest);
   //escenario en que el fecha objetivo esta en el año actual
 } else if (fechaObjetivo.anio == fechaActual.anio) {
+  numeros[0].innerHTML = anio;
   if (fechaObjetivo.mes > fechaActual.mes) {
     let idMesO = fechaObjetivo.mes;
     let idMesA = fechaActual.mes;
